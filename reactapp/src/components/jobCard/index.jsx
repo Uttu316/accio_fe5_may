@@ -1,0 +1,90 @@
+import styles from "./jobcard.module.css";
+import { BsGeoAltFill } from "react-icons/bs";
+import { IoIosPeople } from "react-icons/io";
+import { FaEnvelopeCircleCheck } from "react-icons/fa6";
+import { FcCancel } from "react-icons/fc";
+import { FaRegEye } from "react-icons/fa";
+import { IoIosHome } from "react-icons/io";
+import { useState } from "react";
+import Modal from "../modals";
+
+const JobCard = ({ item }) => {
+  const {
+    image,
+    isWFH,
+    title,
+    tags,
+    founded,
+    location,
+    employees,
+    description
+  } = item;
+  const { min, max } = employees;
+
+  const [isViewModal, setIsViewModal] = useState(false);
+
+  const isTags = tags && tags.length !== 0;
+  const onView = () => {
+    setIsViewModal(true);
+  };
+  const onCloseView = () => {
+    setIsViewModal(false);
+  };
+  return (
+    <div className={styles.jobCard}>
+      <img className={styles.img} src={image} alt={title} />
+      <div className={styles.jobContent}>
+        <p className={styles.title}>{title}</p>
+        <p className={styles.location}>
+          {!isWFH && (
+            <BsGeoAltFill
+              color="orange"
+              size={12}
+              className={styles.locationIcon}
+            />
+          )}
+          {isWFH && (
+            <IoIosHome
+              color="orange"
+              size={12}
+              className={styles.locationIcon}
+            />
+          )}
+          Job Available in <span className={styles.city}>{location}</span>
+        </p>
+        <p className={styles.founded}>
+          <IoIosPeople
+            className={styles.peopleIcon}
+            size={18}
+            color="#409bb7"
+          />{" "}
+          Founded in {founded}
+          <span></span>
+          {min} - {max} Employees
+        </p>
+        <p className={styles.desc}>{description}</p>
+        {isTags &&
+          tags.map((tag, index) => (
+            <span className={styles.tag} key={index}>
+              {tag}
+            </span>
+          ))}
+      </div>
+      <div className={styles.jobActions}>
+        <button onClick={onView} className={styles.viewBtn}>
+          View <FaRegEye />
+        </button>
+        <div className={styles.jobSubActions}>
+          <button title="Apply" className={styles.jobApply}>
+            <FaEnvelopeCircleCheck />
+          </button>
+          <button title="Reject" className={styles.jobReject}>
+            <FcCancel />
+          </button>
+        </div>
+      </div>
+      {isViewModal && <Modal onClose={onCloseView} />}
+    </div>
+  );
+};
+export default JobCard;

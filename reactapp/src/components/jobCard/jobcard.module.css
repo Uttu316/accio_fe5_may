@@ -1,0 +1,143 @@
+
+
+
+.jobCard{
+    border: 2px solid #f1f1f1;
+    padding: 16px;
+    border-radius: 2px;
+    background-color: white;
+    margin-bottom: 20px;
+    max-width: 800px;
+    cursor: pointer;
+    display: flex;
+    gap: 16px;
+}
+.jobCard:hover{
+    border: 2px solid rgba(137, 137, 137,0.3);
+}
+
+.jobContent{
+        width: 70%;
+}
+
+.img{
+    height: 70px;
+    width: 70px;
+    border-radius: 4px;
+}
+
+.title{
+    font-size:18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.location{
+    font-size: 14px;
+}
+.locationIcon{
+    margin-right: 6px;
+}
+.city{
+    font-weight: bold;
+}
+.founded{
+    color: #949eaa;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 6px;
+}
+.founded span{
+    height: 3px;
+    display: inline-block;
+    width: 3px;
+    border-radius: 50%;
+    background-color: #949eaa;
+    position: relative;
+    top: -4px;
+    margin: 0px 6px ;
+}
+.peopleIcon{
+    position: relative;
+    top: 4px;
+}
+.desc{
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 10px;
+    color: #53687a;
+
+    /* text-overflow: ellipsis;
+    overflow: hidden;
+   white-space: nowrap; */
+    display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.tag{
+    background-color: #ededed;
+    font-size: 10px;
+    padding: 4px 8px;
+    border-radius: 2px;
+    margin-right: 6px;
+    margin-top: 6px;
+    display: inline-block;
+    color: #53687a;
+}
+
+.jobActions{
+    border-left: 1px solid #f1f1f1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.viewBtn{
+    background-color: #02bfa0;
+    color: white;
+    padding: 8px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0px 4px 4px #02bfa0;
+    margin-bottom: 10px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 4px;
+}
+
+.jobSubActions{
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+.jobApply{
+    padding: 8px;
+    border: none;
+    border-radius: 50%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    color: orange;
+    cursor: pointer;
+    background-color: rgb(255, 235, 198);
+}
+.jobReject{
+    padding: 8px;
+    border: none;
+    border-radius: 50%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    color: crimson;
+    cursor: pointer;
+    background-color: rgb(245, 222, 226);
+}
