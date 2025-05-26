@@ -1,0 +1,30 @@
+
+/* Input item */
+.inputItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputItem label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #444;
+    font-size: 14px;
+}
+
+.inputItem input,
+.inputTextArea textarea {
+    padding: 10px 14px;
+    font-size: 15px;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: inherit;
+}
+
+.inputItem input:focus,
+.inputTextArea textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.4);
+}

@@ -6,11 +6,13 @@ import { FcCancel } from "react-icons/fc";
 import { FaRegEye } from "react-icons/fa";
 import { IoIosHome } from "react-icons/io";
 import { useState } from "react";
-import Modal from "../modals";
+import JobModal from "../modals/jobModal";
+import ApplyModal from "../modals/applyModal";
 
 const JobCard = ({ item }) => {
   const {
     image,
+    id,
     isWFH,
     title,
     tags,
@@ -22,6 +24,7 @@ const JobCard = ({ item }) => {
   const { min, max } = employees;
 
   const [isViewModal, setIsViewModal] = useState(false);
+  const [isApplyModal, setIsApplyModal] = useState(false);
 
   const isTags = tags && tags.length !== 0;
   const onView = () => {
@@ -29,6 +32,13 @@ const JobCard = ({ item }) => {
   };
   const onCloseView = () => {
     setIsViewModal(false);
+  };
+  const onApply = () => {
+    setIsApplyModal(true);
+  };
+
+  const onCloseApply = () => {
+    setIsApplyModal(false);
   };
   return (
     <div className={styles.jobCard}>
@@ -75,7 +85,7 @@ const JobCard = ({ item }) => {
           View <FaRegEye />
         </button>
         <div className={styles.jobSubActions}>
-          <button title="Apply" className={styles.jobApply}>
+          <button onClick={onApply} title="Apply" className={styles.jobApply}>
             <FaEnvelopeCircleCheck />
           </button>
           <button title="Reject" className={styles.jobReject}>
@@ -83,7 +93,10 @@ const JobCard = ({ item }) => {
           </button>
         </div>
       </div>
-      {isViewModal && <Modal onClose={onCloseView} />}
+      {isViewModal && <JobModal jobInfo={item} onClose={onCloseView} />}
+      {isApplyModal && (
+        <ApplyModal id={id} title={title} onClose={onCloseApply} />
+      )}
     </div>
   );
 };
