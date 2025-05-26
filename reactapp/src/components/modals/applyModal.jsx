@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./modal.module.css";
 import { sendDataToApply } from "../../services/applyjobService";
 import InputItem from "../inputItem";
@@ -63,6 +63,21 @@ const ApplyModal = ({ onClose, id, title }) => {
       console.log(e);
     }
   };
+
+  useEffect(() => {
+    console.log("Component has mounted");
+
+    return () => {
+      //cleanup function
+      console.log("Component unmounted");
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log("Error is updated");
+    //activity
+  }, [error]);
+
   return (
     <div className={styles.modal}>
       <div className={styles.modalContainer}>
