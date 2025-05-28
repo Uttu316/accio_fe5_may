@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./sale.module.css";
 
+const saleEnd = Date.now() + 86400000;
 function msToHMS(ms) {
   // 1- Convert to seconds:
   var seconds = ms / 1000;
@@ -26,8 +27,6 @@ let timerId;
 
 const SaleBanner = () => {
   const [time, settime] = useState(0);
-
-  const saleEnd = new Date("2025-05-27T23:59:00").getTime();
 
   const remainingTime = saleEnd - Date.now();
 

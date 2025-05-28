@@ -13,7 +13,11 @@ const JobModal = ({ onClose, jobInfo }) => {
         <hr />
         <h3>{title}</h3>
         <img src={image} alt={title} height={70} width={70} />
-        <p>{description}</p>
+        <p
+          dangerouslySetInnerHTML={{
+            __html: description
+          }}
+        />
       </div>
     </div>
   );

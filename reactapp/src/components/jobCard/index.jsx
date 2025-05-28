@@ -16,7 +16,7 @@ const JobCard = ({ item }) => {
     isWFH,
     title,
     tags,
-    founded,
+    createdAt,
     location,
     employees,
     description
@@ -27,6 +27,7 @@ const JobCard = ({ item }) => {
   const [isApplyModal, setIsApplyModal] = useState(false);
 
   const isTags = tags && tags.length !== 0;
+
   const onView = () => {
     setIsViewModal(true);
   };
@@ -40,6 +41,8 @@ const JobCard = ({ item }) => {
   const onCloseApply = () => {
     setIsApplyModal(false);
   };
+
+  const date = new Date(createdAt).toDateString();
   return (
     <div className={styles.jobCard}>
       <img className={styles.img} src={image} alt={title} />
@@ -68,11 +71,16 @@ const JobCard = ({ item }) => {
             size={18}
             color="#409bb7"
           />{" "}
-          Founded in {founded}
+          Job created at {date}
           <span></span>
           {min} - {max} Employees
         </p>
-        <p className={styles.desc}>{description}</p>
+        <p
+          dangerouslySetInnerHTML={{
+            __html: description
+          }}
+          className={styles.desc}
+        ></p>
         {isTags &&
           tags.map((tag, index) => (
             <span className={styles.tag} key={index}>
