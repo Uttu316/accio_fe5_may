@@ -1,35 +1,11 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
 // import jobsCards from "../../data/jobCards";
+import { useContext } from "react";
+import { HomeContext } from "../../contexts/HomeContext";
 import CardsContainer from "../cardsContainer";
 import ResultHeader from "../resultHeader";
-import { getJobs } from "../../services/getJobsService";
 
 const MainContainer = () => {
-  const [data, setData] = useState({
-    start: 0,
-    last: 0,
-    total: 0,
-    cards: []
-  });
-
-  const [status, setStatus] = useState("loading");
-
-  console.log("Render");
-
-  const fetchJobs = useCallback(async () => {
-    try {
-      const data = await getJobs();
-      setData(data);
-      setStatus("done");
-    } catch (e) {
-      setStatus("error");
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchJobs();
-  }, []);
-
+  const { data, status } = useContext(HomeContext);
   const isLoading = status === "loading";
   const isDone = status === "done";
   const isError = status === "error";
@@ -39,13 +15,13 @@ const MainContainer = () => {
 
   return (
     <div>
-      <ResultHeader isLoading={isLoading} pageData={data} />
+      <ResultHeader isLoading={isLoading} />
 
       {isLoading && <h2>Loading jobs for you...</h2>}
       {hasData && (
         <>
           {" "}
-          <CardsContainer data={data.cards} />
+          <CardsContainer />
           <div id="lastCard"></div>
         </>
       )}

@@ -1,9 +1,9 @@
 import CardsList from "../cardsList";
 import "./cardsContainer.css";
-const CardsContainer = ({ data }) => {
+const CardsContainer = () => {
   return (
     <div className="cardsContainer">
-      <CardsList data={data} />
+      <CardsList />
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Header from "../../components/header";
 import styles from "./profile.module.css";
 import ProfileDetails from "../../components/profileDetails";
 import { useNavigate } from "react-router";
+import Page from "../../components/pageWrapper";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -29,14 +29,13 @@ const Profile = () => {
   };
 
   return (
-    <div className={styles.profilePage}>
-      <Header />
+    <Page className={styles.profilePage}>
       <ProfileDetails
         user={user}
         onEdit={handleEdit}
         onSignOut={handleSignOut}
       />
-    </div>
+    </Page>
   );
 };
 

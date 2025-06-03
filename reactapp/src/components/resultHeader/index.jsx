@@ -1,8 +1,10 @@
+import { HomeContext } from "../../contexts/HomeContext";
 import "./resultHeader.css";
-import { memo, useEffect, useRef } from "react";
+import { memo, useContext, useEffect, useRef } from "react";
 
 const ResultHeader = (props) => {
-  const { pageData, isLoading } = props;
+  const { data } = useContext(HomeContext);
+  const { isLoading } = props;
 
   const elRef = useRef();
   const xRef = useRef(0); // remember the updated value  on next render
@@ -28,8 +30,7 @@ const ResultHeader = (props) => {
         <>
           {" "}
           <p>
-            Showing {pageData.start} - {pageData.last} out of {pageData.total}{" "}
-            jobs
+            Showing {data.start} - {data.last} out of {data.total} jobs
           </p>
           <p ref={elRef} className="resultHeader_subHeading">
             that are recommended for you

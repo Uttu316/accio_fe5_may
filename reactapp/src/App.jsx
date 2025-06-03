@@ -1,17 +1,21 @@
 import "./App.css";
+import { lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router";
-import Home from "./pages/home";
-import Plans from "./pages/plans";
-import Login from "./pages/login";
-import Profile from "./pages/profile";
-import NotFound from "./pages/notFound";
+const Home = lazy(() => import("./pages/home"));
+const Plans = lazy(() => import("./pages/plans"));
+const Login = lazy(() => import("./pages/login"));
+const Profile = lazy(() => import("./pages/profile"));
+const NotFound = lazy(() => import("./pages/notFound"));
 import PrivateRoute from "./routes/privateProute";
 import ProtectedRoute from "./routes/protectedRoute";
+import Router from "./routes";
+
+import ErrorBoundary from "./errorBoundaries";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
+    <ErrorBoundary>
+      <Router>
         <Route path="/" element={<Home />} />
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />
@@ -24,8 +28,8 @@ const App = () => {
         </Route>
 
         <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+      </Router>
+    </ErrorBoundary>
   );
 };
 export default App;
